@@ -88,7 +88,7 @@ class ProducerRepository implements IProducerRepository {
     try {
       await this.repository.update(producer, data);
 
-      return ok(producer);
+      return noContent();
     } catch (err) {
       return serverError(err);
     }
