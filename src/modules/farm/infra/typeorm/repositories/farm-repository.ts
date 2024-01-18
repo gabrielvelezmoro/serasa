@@ -1,6 +1,6 @@
 import { getRepository, Repository } from "typeorm";
-import { ICreateFarmDTO } from "@modules/farm/dtos/i-create-farm-dto";
-import { IUpdateFarmDTO } from "@modules/farm/dtos/i-update-farm-dto";
+import { ICreateFarmDTO } from "@modules/farm/dtos/farm-dto/i-create-farm-dto";
+import { IUpdateFarmDTO } from "@modules/farm/dtos/farm-dto/i-update-farm-dto";
 import { IFarmRepository } from "@modules/farm/repositories/i-farm-repository";
 import { Farm } from "@modules/farm/infra/typeorm/entities/farm";
 import {
