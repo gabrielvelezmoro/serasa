@@ -1,8 +1,8 @@
 import { inject, injectable } from "tsyringe";
-import { Producer } from "@modules/farm/infra/typeorm/entities/producer";
 import { IProducerRepository } from "@modules/farm/repositories/i-producer-repository";
-import { AppError } from "@shared/errors/app-error";
 import { HttpResponse } from "@shared/helpers/http";
+import { cpf as validator } from "cpf-cnpj-validator";
+import { AppError } from "@shared/errors/app-error";
 
 interface IRequest {
   nome: string;
@@ -17,14 +17,16 @@ class CreateProducerUseCase {
   ) {}
 
   async execute({ nome, cpf }: IRequest): Promise<HttpResponse> {
-    return this.producerRepository
-      .create({
-        nome,
-        cpf,
-      })
-      .then((newProducer) => {
-        return newProducer;
-      });
+    if (validator.isValid(cpf))
+      return this.producerRepository
+        .create({
+          nome,
+          cpf,
+        })
+        .then((newProducer) => {
+          return newProducer;
+        });
+    else throw new AppError("cpf inválido", 400);
   }
 }
 
