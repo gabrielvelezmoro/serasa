@@ -1,7 +1,5 @@
 import { container } from "tsyringe";
 
-import "@shared/container/providers";
-
 import { IProducerRepository } from "@modules/farm/repositories/i-producer-repository";
 import { ProducerRepository } from "@modules/farm/infra/typeorm/repositories/producer-repository";
 import { IFarmRepository } from "@modules/farm/repositories/i-farm-repository";

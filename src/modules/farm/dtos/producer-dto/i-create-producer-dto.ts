@@ -1,6 +1,6 @@
 interface ICreateProducerDTO {
   nome: string;
-  cpf: string;
+  cpfOuCNPJ: string;
 }
 
 export { ICreateProducerDTO };

@@ -1,12 +1,12 @@
 import { inject, injectable } from "tsyringe";
 import { IProducerRepository } from "@modules/farm/repositories/i-producer-repository";
 import { HttpResponse } from "@shared/helpers/http";
-import { cpf as validator } from "cpf-cnpj-validator";
+import { cpf as cpfValidator, cnpj as cnpjValidator } from "cpf-cnpj-validator";
 import { AppError } from "@shared/errors/app-error";
 
 interface IRequest {
   nome: string;
-  cpf: string;
+  cpfOuCNPJ: string;
 }
 
 @injectable()
@@ -16,17 +16,17 @@ class CreateProducerUseCase {
     private producerRepository: IProducerRepository
   ) {}
 
-  async execute({ nome, cpf }: IRequest): Promise<HttpResponse> {
-    if (validator.isValid(cpf))
+  async execute({ nome, cpfOuCNPJ }: IRequest): Promise<HttpResponse> {
+    if (cpfValidator.isValid(cpfOuCNPJ) || cnpjValidator.isValid(cpfOuCNPJ))
       return this.producerRepository
         .create({
           nome,
-          cpf,
+          cpfOuCNPJ,
         })
         .then((newProducer) => {
           return newProducer;
         });
-    else throw new AppError("cpf inválido", 400);
+    else throw new AppError("cpf ou cnpj inválido", 400);
   }
 }
 

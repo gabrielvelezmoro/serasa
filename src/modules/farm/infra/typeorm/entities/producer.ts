@@ -1,10 +1,4 @@
-import {
-  PrimaryColumn,
-  Column,
-  CreateDateColumn,
-  UpdateDateColumn,
-  Entity,
-} from "typeorm";
+import { PrimaryColumn, Column, Entity } from "typeorm";
 
 @Entity("producer")
 class Producer {
@@ -14,8 +8,8 @@ class Producer {
   @Column({ name: "nome", nullable: false })
   nome: string;
 
-  @Column({ name: "cpf", nullable: false })
-  cpf: string;
+  @Column({ name: "cpf_cnpj", nullable: false })
+  cpfOuCNPJ: string;
 }
 
 export { Producer };

@@ -18,10 +18,10 @@ class ProducerRepository implements IProducerRepository {
     this.repository = getRepository(Producer);
   }
 
-  async create({ nome, cpf }: ICreateProducerDTO): Promise<HttpResponse> {
-    const producer = this.repository.create({
+  async create({ nome, cpfOuCNPJ }: ICreateProducerDTO): Promise<HttpResponse> {
+    const producer = await this.repository.create({
       nome,
-      cpf,
+      cpfOuCNPJ,
     });
 
     const result = await this.repository
@@ -62,10 +62,9 @@ class ProducerRepository implements IProducerRepository {
     }
   }
 
-  // get
-  async getByCpf(cpf: string): Promise<HttpResponse> {
+  async getByCpf(cpfOuCNPJ: string): Promise<HttpResponse> {
     try {
-      const person = await this.repository.findOne(cpf);
+      const person = await this.repository.findOne(cpfOuCNPJ);
 
       if (typeof person === "undefined") {
         return noContent();

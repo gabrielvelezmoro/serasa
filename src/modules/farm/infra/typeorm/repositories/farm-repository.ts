@@ -18,13 +18,10 @@ class FarmRepository implements IFarmRepository {
     this.repository = getRepository(Farm);
   }
 
-  // create
   async create({
     nome,
     idProducer,
-    idProduct,
     cidade,
-    cnpj,
     estado,
     produceble_area,
     total_area,
@@ -32,8 +29,6 @@ class FarmRepository implements IFarmRepository {
   }: ICreateFarmDTO): Promise<HttpResponse> {
     const farm = this.repository.create({
       nome,
-      cnpj,
-      idProduct,
       idProducer,
       producebleArea: produceble_area,
       vegetationArea: vegetation_area,
@@ -55,37 +50,13 @@ class FarmRepository implements IFarmRepository {
     return result;
   }
 
-  // list
-  async list(
-    search: string,
-    page: number,
-    rowsPerPage: number,
-    columnOrder: Array<"ASC" | "DESC">
-  ): Promise<HttpResponse> {
-    if (typeof columnOrder === "undefined" || columnOrder.length === 0) {
-      const sortArray = new Array<"ASC" | "DESC">(4).fill("ASC");
-      columnOrder = sortArray;
-    }
-
-    const offset = rowsPerPage * page;
-
+  async list(): Promise<HttpResponse> {
     try {
       let farms = await this.repository
-        .createQueryBuilder("nota")
+        .createQueryBuilder("farm")
         .select(["nota.id", "nota.idPessoa", "nota.titulo"])
-        .where("CAST(titulo AS VARCHAR) ilike :search", {
-          search: `%${search}%`,
-        })
-        .take(rowsPerPage)
-        .skip(offset)
+
         .getMany();
-
-      // below statements are to solve typeorm bug related to use of leftjoins, filters, .take and .skip together
-
-      if (farms.length > rowsPerPage) {
-        farms = farms.slice(offset, offset + rowsPerPage);
-      }
-      //
 
       return ok(farms);
     } catch (err) {
@@ -93,29 +64,25 @@ class FarmRepository implements IFarmRepository {
     }
   }
 
-  // get
   async get(id: string): Promise<HttpResponse> {
     try {
-      const anotacao = await this.repository.findOne(id);
+      const farm = await this.repository.findOne(id);
 
-      if (typeof anotacao === "undefined") {
+      if (typeof farm === "undefined") {
         return noContent();
       }
 
-      return ok(anotacao);
+      return ok(farm);
     } catch (err) {
       return serverError(err);
     }
   }
 
-  // update
   async update({
     id,
     nome,
     idProducer,
-    idProduct,
     cidade,
-    cnpj,
     estado,
     produceble_area,
     total_area,
@@ -129,10 +96,8 @@ class FarmRepository implements IFarmRepository {
 
     const newAnotacao = this.repository.create({
       cidade,
-      cnpj,
       estado,
       idProducer,
-      idProduct,
       nome,
       producebleArea: produceble_area,
       totalArea: total_area,
@@ -148,7 +113,6 @@ class FarmRepository implements IFarmRepository {
     }
   }
 
-  // delete
   async delete(id: string): Promise<HttpResponse> {
     await this.repository.delete(id);
 

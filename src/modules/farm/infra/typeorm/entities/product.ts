@@ -1,10 +1,4 @@
-import {
-  PrimaryColumn,
-  Column,
-  CreateDateColumn,
-  UpdateDateColumn,
-  Entity,
-} from "typeorm";
+import { PrimaryColumn, Column, Entity } from "typeorm";
 
 @Entity("product")
 class Product {

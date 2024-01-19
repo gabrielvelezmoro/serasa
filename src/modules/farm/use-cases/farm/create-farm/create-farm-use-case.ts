@@ -3,7 +3,7 @@ import { Farm } from "@modules/farm/infra/typeorm/entities/farm";
 import { IFarmRepository } from "@modules/farm/repositories/i-farm-repository";
 
 interface IRequest {
-  nomeDoProdutor: number;
+  idProducer: number;
   nomeDaFazenda: string;
   cidade: string;
   estado: string;
@@ -21,7 +21,7 @@ class CreateFarmUseCase {
 
   async execute({
     nomeDaFazenda,
-    nomeDoProdutor,
+    idProducer,
     cidade,
     estado,
     areaTotalHectFazenda,
@@ -29,7 +29,15 @@ class CreateFarmUseCase {
     vegetationArea,
   }: IRequest): Promise<Farm> {
     const result = this.anotacaoRepository
-      .create({})
+      .create({
+        nome: nomeDaFazenda,
+        cidade,
+        idProducer,
+        estado,
+        produceble_area: areaAgricultavelHect,
+        total_area: areaTotalHectFazenda,
+        vegetation_area: vegetationArea,
+      })
       .then((newFarm) => {
         return newFarm;
       })

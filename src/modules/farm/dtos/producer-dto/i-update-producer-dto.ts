@@ -1,7 +1,7 @@
 interface IUpdateProducerDTO {
   id: number;
   nome?: string;
-  cpf?: string;
+  cpfOuCNPJ?: string;
 }
 
 export { IUpdateProducerDTO };

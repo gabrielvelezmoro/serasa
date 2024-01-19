@@ -1,8 +1,6 @@
 interface ICreateFarmDTO {
   idProducer: number;
-  idProduct: number;
   nome: string;
-  cnpj: string;
   cidade: string;
   estado: string;
   total_area: number;

@@ -4,7 +4,7 @@ import { UpdateProducerUseCase } from "./update-producer-use-case";
 
 class UpdateProducerController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { nome, cpf } = request.body;
+    const { nome, cpfOuCNPJ } = request.body;
     const { id } = request.params;
 
     const updateProducerUseCase = container.resolve(UpdateProducerUseCase);
@@ -13,7 +13,7 @@ class UpdateProducerController {
       .execute({
         id: Number(id),
         nome,
-        cpf,
+        cpfOuCNPJ,
       })
       .then((pessoaResult) => {
         return pessoaResult;

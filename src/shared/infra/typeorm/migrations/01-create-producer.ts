@@ -20,7 +20,7 @@ export class CreateProducer1672799344002 implements MigrationInterface {
             length: "255",
           },
           {
-            name: "cpf",
+            name: "cpf_cnpj",
             type: "varchar",
             isUnique: true,
             isNullable: false,
