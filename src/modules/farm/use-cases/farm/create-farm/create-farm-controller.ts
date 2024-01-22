@@ -58,7 +58,7 @@ class CreateFarmController {
         return error;
       });
 
-    return response.status(result.statusCode).json(result);
+    return response.status(result.statusCode).json(result.data);
   }
 }
 

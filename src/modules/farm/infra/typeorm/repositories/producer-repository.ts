@@ -64,7 +64,11 @@ class ProducerRepository implements IProducerRepository {
 
   async getByCpfOrCnpj(cpfOuCNPJ: string): Promise<HttpResponse> {
     try {
-      const person = await this.repository.findOne(cpfOuCNPJ);
+      const person = await this.repository
+        .createQueryBuilder("producer")
+        .select()
+        .where({ cpfOuCNPJ })
+        .getOneOrFail();
 
       if (typeof person === "undefined") {
         return noContent();
