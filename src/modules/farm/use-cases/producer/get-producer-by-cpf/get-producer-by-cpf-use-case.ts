@@ -9,8 +9,8 @@ class GetProducerByCpfUseCase {
     private producertRepository: IProducerRepository
   ) {}
 
-  async execute(id: string): Promise<HttpResponse> {
-    const pessoa = await this.producertRepository.getByCpf(id);
+  async execute(cpfOuCNPJ: string): Promise<HttpResponse> {
+    const pessoa = await this.producertRepository.getByCpfOrCnpj(cpfOuCNPJ);
 
     return pessoa;
   }

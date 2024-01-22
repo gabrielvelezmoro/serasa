@@ -8,8 +8,6 @@ interface IFarmRepository {
 
   get(id: string): Promise<HttpResponse>;
 
-  update(data: ICreateFarmDTO): Promise<HttpResponse>;
-
   delete(id: string): Promise<HttpResponse>;
 }
 

@@ -10,9 +10,9 @@ class GetProducerByIdUseCase {
   ) {}
 
   async execute(id: string): Promise<HttpResponse> {
-    const pessoa = await this.producertRepository.get(id);
+    const producer = await this.producertRepository.get(id);
 
-    return pessoa;
+    return producer;
   }
 }
 

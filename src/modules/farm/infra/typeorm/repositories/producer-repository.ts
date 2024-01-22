@@ -62,7 +62,7 @@ class ProducerRepository implements IProducerRepository {
     }
   }
 
-  async getByCpf(cpfOuCNPJ: string): Promise<HttpResponse> {
+  async getByCpfOrCnpj(cpfOuCNPJ: string): Promise<HttpResponse> {
     try {
       const person = await this.repository.findOne(cpfOuCNPJ);
 

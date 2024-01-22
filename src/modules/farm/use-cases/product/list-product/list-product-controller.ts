@@ -8,7 +8,7 @@ class ListProductController {
 
     const products = await listProductUseCase.execute();
 
-    return response.json(products);
+    return response.status(products.statusCode).json(products.data);
   }
 }
 

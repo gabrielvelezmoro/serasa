@@ -4,11 +4,11 @@ import { GetProducerByCpfUseCase } from "./get-producer-by-cpf-use-case";
 
 class GetProducerByIdController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const cpf = request.params.cpf;
+    const cpfOuCNPJ = request.params.cpfOuCNPJ;
     const getProducerByCpfUseCase = container.resolve(GetProducerByCpfUseCase);
-    const producer = await getProducerByCpfUseCase.execute(cpf);
+    const producer = await getProducerByCpfUseCase.execute(cpfOuCNPJ);
 
-    return response.status(producer.statusCode).json(producer);
+    return response.status(producer.statusCode).json(producer.data);
   }
 }
 

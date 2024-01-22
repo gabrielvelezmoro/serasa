@@ -3,14 +3,13 @@ import { IUpdateProducerDTO } from "@modules/farm/dtos/producer-dto/i-update-pro
 import { HttpResponse } from "@shared/helpers";
 
 interface IProducerRepository {
-  // create
   create(data: ICreateProducerDTO): Promise<HttpResponse>;
 
   list(): Promise<HttpResponse>;
 
   get(id: string): Promise<HttpResponse>;
 
-  getByCpf(cpf: string): Promise<HttpResponse>;
+  getByCpfOrCnpj(cpf: string): Promise<HttpResponse>;
 
   update(data: IUpdateProducerDTO): Promise<HttpResponse>;
 

@@ -8,7 +8,7 @@ class GetProducerController {
     const getProducerByIdUseCase = container.resolve(GetProducerByIdUseCase);
     const producer = await getProducerByIdUseCase.execute(id);
 
-    return response.status(producer.statusCode).json(producer);
+    return response.status(producer.statusCode).json(producer.data);
   }
 }
 

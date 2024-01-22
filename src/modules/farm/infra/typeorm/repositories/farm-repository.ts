@@ -1,15 +1,8 @@
 import { getRepository, Repository } from "typeorm";
 import { ICreateFarmDTO } from "@modules/farm/dtos/farm-dto/i-create-farm-dto";
-import { IUpdateFarmDTO } from "@modules/farm/dtos/farm-dto/i-update-farm-dto";
 import { IFarmRepository } from "@modules/farm/repositories/i-farm-repository";
 import { Farm } from "@modules/farm/infra/typeorm/entities/farm";
-import {
-  noContent,
-  serverError,
-  ok,
-  notFound,
-  HttpResponse,
-} from "@shared/helpers";
+import { noContent, serverError, ok, HttpResponse } from "@shared/helpers";
 
 class FarmRepository implements IFarmRepository {
   private repository: Repository<Farm>;
@@ -54,8 +47,7 @@ class FarmRepository implements IFarmRepository {
     try {
       let farms = await this.repository
         .createQueryBuilder("farm")
-        .select(["nota.id", "nota.idPessoa", "nota.titulo"])
-
+        .select()
         .getMany();
 
       return ok(farms);
@@ -73,41 +65,6 @@ class FarmRepository implements IFarmRepository {
       }
 
       return ok(farm);
-    } catch (err) {
-      return serverError(err);
-    }
-  }
-
-  async update({
-    id,
-    nome,
-    idProducer,
-    cidade,
-    estado,
-    produceble_area,
-    total_area,
-    vegetation_area,
-  }: IUpdateFarmDTO): Promise<HttpResponse> {
-    const anotacao = await this.repository.findOne(id);
-
-    if (!anotacao) {
-      return notFound();
-    }
-
-    const newAnotacao = this.repository.create({
-      cidade,
-      estado,
-      idProducer,
-      nome,
-      producebleArea: produceble_area,
-      totalArea: total_area,
-      vegetationArea: vegetation_area,
-    });
-
-    try {
-      await this.repository.update(anotacao, newAnotacao);
-
-      return ok(newAnotacao);
     } catch (err) {
       return serverError(err);
     }
