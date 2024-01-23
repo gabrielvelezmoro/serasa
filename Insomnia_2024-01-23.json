@@ -1,0 +1,344 @@
+{
+    "_type": "export",
+    "__export_format": 4,
+    "__export_date": "2024-01-23T21:05:14.197Z",
+    "__export_source": "insomnia.desktop.app:v2023.5.8",
+    "resources": [
+        {
+            "_id": "req_d87a8c881de94399889b021b25823aa0",
+            "parentId": "fld_3aa7cc12c4c4488eab89d71614757788",
+            "modified": 1705607571947,
+            "created": 1705607425498,
+            "url": "http://localhost:3333/product",
+            "name": "create product",
+            "description": "",
+            "method": "POST",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"nome\": \"Café\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/2023.5.8"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1705607480401,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "fld_3aa7cc12c4c4488eab89d71614757788",
+            "parentId": "wrk_1d419959875c4466b4a4c5c25763cfaa",
+            "modified": 1705607507538,
+            "created": 1705607474014,
+            "name": "Cultura",
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1705607474014,
+            "_type": "request_group"
+        },
+        {
+            "_id": "wrk_1d419959875c4466b4a4c5c25763cfaa",
+            "parentId": null,
+            "modified": 1705352638479,
+            "created": 1705352638479,
+            "name": "My Collection Serasa",
+            "description": "",
+            "scope": "collection",
+            "_type": "workspace"
+        },
+        {
+            "_id": "req_745b771a6a20404196f1b027cd8067f2",
+            "parentId": "fld_3aa7cc12c4c4488eab89d71614757788",
+            "modified": 1705607608690,
+            "created": 1705607589045,
+            "url": "http://localhost:3333/product",
+            "name": "list all",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/2023.5.8"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1705599001010.5,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_3cc7b25450294000ace02808447954ea",
+            "parentId": "fld_de2bbfe24ac846cc9a4fae802c26250f",
+            "modified": 1705879887177,
+            "created": 1705583602626,
+            "url": "http://localhost:3333/producer",
+            "name": "create",
+            "description": "",
+            "method": "POST",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"nome\": \"Gabriel\",\n\t\"cpfOuCNPJ\": \"108.894.239-38\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/2023.5.8"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1705590521620,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "fld_de2bbfe24ac846cc9a4fae802c26250f",
+            "parentId": "wrk_1d419959875c4466b4a4c5c25763cfaa",
+            "modified": 1705607467246,
+            "created": 1705583596839,
+            "name": "Produtor",
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1705583596839,
+            "_type": "request_group"
+        },
+        {
+            "_id": "req_b2e717d4e47746cf8d59c5cff01f5d82",
+            "parentId": "fld_de2bbfe24ac846cc9a4fae802c26250f",
+            "modified": 1705590575554,
+            "created": 1705589653707,
+            "url": "http://localhost:3333/producer",
+            "name": "find all",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/2023.5.8"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1705590521570,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_ae467c3145414d3fa0abd43ccec1dc5b",
+            "parentId": "fld_de2bbfe24ac846cc9a4fae802c26250f",
+            "modified": 1705601414403,
+            "created": 1705590058562,
+            "url": "http://localhost:3333/producer/42",
+            "name": "find by id",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/2023.5.8"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1705590521545,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_143c18eb04bc4cb4baa808e09f2c336f",
+            "parentId": "fld_de2bbfe24ac846cc9a4fae802c26250f",
+            "modified": 1705879821545,
+            "created": 1705590521520,
+            "url": "http://localhost:3333/producer/37",
+            "name": "update",
+            "description": "",
+            "method": "PUT",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"nome\": \"\",\n\t\"cpfOuCNPJ\": \"10889423938\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/2023.5.8"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1705590521520,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_72a333b0e6ae4c18b550c6e8ad6d7de3",
+            "parentId": "fld_de2bbfe24ac846cc9a4fae802c26250f",
+            "modified": 1705601393226,
+            "created": 1705584175759,
+            "url": "http://localhost:3333/producer/37",
+            "name": "remove",
+            "description": "",
+            "method": "DELETE",
+            "body": {},
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/2023.5.8"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1705584175759,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_057e80d18ee44c5aafb6c953efcde7a3",
+            "parentId": "wrk_1d419959875c4466b4a4c5c25763cfaa",
+            "modified": 1705932277941,
+            "created": 1705352651087,
+            "url": "http://localhost:3333/farm",
+            "name": "create farm",
+            "description": "",
+            "method": "POST",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"cpfOuCNPJ\": \"10889423938\",\n\t\"nomeDoProdutor\": \"Marquito\",\n\t\"nomeDaFazenda\": \"Granja Aurea\",\n\t\"cidade\": \"Laguna\",\n\t\"estado\": \"Santa Catarina\",\n\t\"areaTotalHectFazenda\": 200,\n\t\"areaAgricultavelHect\": 50,\n\t\"vegetationArea\": 10,\n\t\"culturaId\": [1]\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/2023.5.8"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1705352651087,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_fd1ca244454f41af9ff11e9eea154f22",
+            "parentId": "wrk_1d419959875c4466b4a4c5c25763cfaa",
+            "modified": 1705934470708,
+            "created": 1705607238522,
+            "url": "http://localhost:3333/farm/dashboard/2",
+            "name": "Dashboard by Produtor",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/2023.5.8"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1705352650987,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "env_3fcbee6ab0be87a41d7e5c4dd3df7effe6adca7b",
+            "parentId": "wrk_1d419959875c4466b4a4c5c25763cfaa",
+            "modified": 1705352638493,
+            "created": 1705352638493,
+            "name": "Base Environment",
+            "data": {},
+            "dataPropertyOrder": null,
+            "color": null,
+            "isPrivate": false,
+            "metaSortKey": 1705352638493,
+            "_type": "environment"
+        },
+        {
+            "_id": "jar_3fcbee6ab0be87a41d7e5c4dd3df7effe6adca7b",
+            "parentId": "wrk_1d419959875c4466b4a4c5c25763cfaa",
+            "modified": 1705352638498,
+            "created": 1705352638498,
+            "name": "Default Jar",
+            "cookies": [],
+            "_type": "cookie_jar"
+        }
+    ]
+}
