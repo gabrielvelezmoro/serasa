@@ -1,34 +1,18 @@
 import { getRepository, Repository } from "typeorm";
-import { ICreateFarmDTO } from "@modules/farm/dtos/farm-dto/i-create-farm-dto";
-import { IFarmRepository } from "@modules/farm/repositories/i-farm-repository";
-import { Farm } from "@modules/farm/infra/typeorm/entities/farm";
+import { IFarmProductDTO } from "@modules/farm/dtos/farm-product-dto/i-create-farm-product-dto";
+import { IFarmProductRepository } from "@modules/farm/repositories/i-farm-product-repository";
+import { FarmProduct } from "@modules/farm/infra/typeorm/entities/farm-product";
 import { noContent, serverError, ok, HttpResponse } from "@shared/helpers";
 
-class FarmRepository implements IFarmRepository {
-  private repository: Repository<Farm>;
+class FarmProductRepository implements IFarmProductRepository {
+  private repository: Repository<FarmProduct>;
 
   constructor() {
-    this.repository = getRepository(Farm);
+    this.repository = getRepository(FarmProduct);
   }
 
-  async create({
-    nome,
-    idProducer,
-    cidade,
-    estado,
-    produceble_area,
-    total_area,
-    vegetation_area,
-  }: ICreateFarmDTO): Promise<HttpResponse> {
-    const farm = this.repository.create({
-      nome,
-      idProducer,
-      producebleArea: produceble_area,
-      vegetationArea: vegetation_area,
-      totalArea: total_area,
-      cidade,
-      estado,
-    });
+  async create({ idFarm, idProduct }: IFarmProductDTO): Promise<HttpResponse> {
+    const farm = this.repository.create({ idFarm, idProduct });
 
     const result = await this.repository
       .save(farm)
@@ -96,4 +80,4 @@ class FarmRepository implements IFarmRepository {
   }
 }
 
-export { FarmRepository };
+export { FarmProductRepository };

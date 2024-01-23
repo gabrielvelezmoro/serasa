@@ -8,6 +8,8 @@ interface IFarmRepository {
 
   get(id: string): Promise<HttpResponse>;
 
+  getDashboard(id: string): Promise<HttpResponse>;
+
   delete(id: string): Promise<HttpResponse>;
 }
 
