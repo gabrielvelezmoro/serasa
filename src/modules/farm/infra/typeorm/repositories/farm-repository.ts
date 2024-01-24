@@ -38,7 +38,6 @@ class FarmRepository implements IFarmRepository {
       .catch((error) => {
         return serverError(error.message);
       });
-    console.log(result);
 
     return result;
   }
@@ -76,8 +75,6 @@ class FarmRepository implements IFarmRepository {
         .createQueryBuilder("farm")
         .where("id_producer = :id", { id })
         .getMany();
-
-      console.log(dashboard);
 
       if (typeof dashboard === "undefined") {
         return noContent();

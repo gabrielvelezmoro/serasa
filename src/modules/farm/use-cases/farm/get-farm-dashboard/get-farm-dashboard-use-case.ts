@@ -12,7 +12,6 @@ class GetFarmDashboardUseCase {
   async execute(id: string): Promise<HttpResponse> {
     let farmDashboard = await this.farmRepository.getDashboard(id);
 
-    console.log(farmDashboard);
     let areaTotal = 0;
     let areaTotalUtilizada = 0;
 

@@ -17,7 +17,6 @@ class FarmProductRepository implements IFarmProductRepository {
     const result = await this.repository
       .save(farm)
       .then((farmResult) => {
-        console.log(farmResult);
         return ok(farmResult);
       })
       .catch((error) => {
@@ -60,8 +59,6 @@ class FarmProductRepository implements IFarmProductRepository {
         .createQueryBuilder("farm")
         .where("id_producer = :id", { id })
         .getMany();
-
-      console.log(dashboard);
 
       if (typeof dashboard === "undefined") {
         return noContent();
