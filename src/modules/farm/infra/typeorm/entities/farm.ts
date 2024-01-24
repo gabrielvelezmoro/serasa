@@ -1,10 +1,16 @@
-import { PrimaryColumn, Column, Entity, JoinColumn, ManyToOne } from "typeorm";
+import {
+  PrimaryGeneratedColumn,
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+} from "typeorm";
 
 import { Producer } from "./producer";
 
 @Entity("farm")
 class Farm {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id?: number;
 
   @ManyToOne(() => Producer, { nullable: false, eager: true })
