@@ -1,19 +1,19 @@
 import { inject, injectable } from "tsyringe";
-import { IProducerRepository } from "@modules/farm/repositories/i-producer-repository";
+import { IProductRepository } from "@modules/farm/repositories/i-product-repository";
 import { HttpResponse } from "@shared/helpers";
 
 @injectable()
-class GetProducerByIdUseCase {
+class GetProductByIdUseCase {
   constructor(
-    @inject("ProducerRepository")
-    private producertRepository: IProducerRepository
+    @inject("ProductRepository")
+    private productRepository: IProductRepository
   ) {}
 
   async execute(id: string): Promise<HttpResponse> {
-    const producer = await this.producertRepository.get(id);
+    const product = await this.productRepository.get(id);
 
-    return producer;
+    return product;
   }
 }
 
-export { GetProducerByIdUseCase };
+export { GetProductByIdUseCase };

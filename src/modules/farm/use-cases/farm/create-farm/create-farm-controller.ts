@@ -3,6 +3,7 @@ import { container } from "tsyringe";
 import { CreateFarmUseCase } from "./create-farm-use-case";
 import { GetProducerByCpfUseCase } from "../../producer/get-producer-by-cpf/get-producer-by-cpf-use-case";
 import { CreateProducerUseCase } from "../../producer/create-producer/create-producer-use-case";
+import { GetProductByIdUseCase } from "../../product/get-product-by-id/get-product-by-id-use-case";
 import { cpf as cpfValidator, cnpj as cnpjValidator } from "cpf-cnpj-validator";
 import { AppError } from "@shared/errors/app-error";
 
@@ -22,9 +23,18 @@ class CreateFarmController {
     const createFarmUseCase = container.resolve(CreateFarmUseCase);
     const createProducerUseCase = container.resolve(CreateProducerUseCase);
     const getProducerByCpfUseCase = container.resolve(GetProducerByCpfUseCase);
+    const getProductByIdUseCase = container.resolve(GetProductByIdUseCase);
 
     if (!cpfValidator.isValid(cpfOuCNPJ) && !cnpjValidator.isValid(cpfOuCNPJ))
       throw new AppError("cpf ou cnpj invalido");
+
+    for (let index = 0; index < request.body.culturaId.length; index++) {
+      let product = await getProductByIdUseCase.execute(
+        request.body.culturaId[index]
+      );
+      if (product.data === null)
+        throw new AppError("cultura não encontrada", 404);
+    }
 
     let producer = await getProducerByCpfUseCase.execute(cpfOuCNPJ);
 

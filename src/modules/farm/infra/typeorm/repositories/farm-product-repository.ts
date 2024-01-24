@@ -40,15 +40,15 @@ class FarmProductRepository implements IFarmProductRepository {
     }
   }
 
-  async get(id: string): Promise<HttpResponse> {
+  async getByFarmId(id: number): Promise<HttpResponse> {
     try {
-      const farm = await this.repository.findOne(id);
+      let farms = await this.repository
+        .createQueryBuilder()
+        .select()
+        .where("id_farm = :id", { id })
+        .getMany();
 
-      if (typeof farm === "undefined") {
-        return noContent();
-      }
-
-      return ok(farm);
+      return ok(farms);
     } catch (err) {
       return serverError(err);
     }

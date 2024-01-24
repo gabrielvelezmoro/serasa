@@ -6,7 +6,7 @@ interface IFarmProductRepository {
 
   list(): Promise<HttpResponse>;
 
-  get(idFarm: string): Promise<HttpResponse>;
+  getByFarmId(idFarm: number): Promise<HttpResponse>;
 
   delete(id: string): Promise<HttpResponse>;
 }

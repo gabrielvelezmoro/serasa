@@ -16,7 +16,7 @@ interface IRequest {
 class CreateFarmUseCase {
   constructor(
     @inject("FarmRepository")
-    private anotacaoRepository: IFarmRepository
+    private farmRepository: IFarmRepository
   ) {}
 
   async execute({
@@ -28,7 +28,7 @@ class CreateFarmUseCase {
     areaAgricultavelHect,
     vegetationArea,
   }: IRequest): Promise<Farm> {
-    const result = this.anotacaoRepository
+    const result = this.farmRepository
       .create({
         nome: nomeDaFazenda,
         cidade,
