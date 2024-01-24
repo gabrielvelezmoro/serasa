@@ -33,12 +33,12 @@ class FarmRepository implements IFarmRepository {
     const result = await this.repository
       .save(farm)
       .then((farmResult) => {
-        console.log(farmResult);
         return ok(farmResult);
       })
       .catch((error) => {
         return serverError(error.message);
       });
+    console.log(result);
 
     return result;
   }

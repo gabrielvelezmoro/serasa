@@ -28,12 +28,14 @@ class CreateFarmController {
     if (!cpfValidator.isValid(cpfOuCNPJ) && !cnpjValidator.isValid(cpfOuCNPJ))
       throw new AppError("cpf ou cnpj invalido");
 
-    for (let index = 0; index < request.body.culturaId.length; index++) {
-      let product = await getProductByIdUseCase.execute(
-        request.body.culturaId[index]
-      );
-      if (product.data === null)
-        throw new AppError("cultura não encontrada", 404);
+    if (request.body.culturaId.length) {
+      for (let index = 0; index < request.body.culturaId.length; index++) {
+        let product = await getProductByIdUseCase.execute(
+          request.body.culturaId[index]
+        );
+        if (product.data === null)
+          throw new AppError("cultura não encontrada", 404);
+      }
     }
 
     let producer = await getProducerByCpfUseCase.execute(cpfOuCNPJ);
@@ -67,6 +69,13 @@ class CreateFarmController {
       .catch((error) => {
         return error;
       });
+
+    console.log(result);
+    // for (let index = 0; index < request.body.culturaId.length; index++) {
+    //   let product = await getProductByIdUseCase.execute(
+    //     request.body.culturaId[index]
+    //   );
+    // }
 
     return response.status(result.statusCode).json(result.data);
   }
