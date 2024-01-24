@@ -83,7 +83,7 @@ class CreateFarmController {
       }
     }
 
-    return response.status(result.statusCode).json(result.data);
+    return response.status(result.statusCode).send();
   }
 }
 

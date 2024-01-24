@@ -9,6 +9,7 @@ import {
   ok,
   notFound,
   HttpResponse,
+  created,
 } from "@shared/helpers";
 
 class ProducerRepository implements IProducerRepository {
@@ -27,7 +28,7 @@ class ProducerRepository implements IProducerRepository {
     const result = await this.repository
       .save(producer)
       .then((newProducer) => {
-        return ok(newProducer);
+        return created(newProducer);
       })
       .catch((error) => {
         return serverError(error.message);

@@ -1,7 +1,13 @@
 import { getRepository, Repository } from "typeorm";
 import { ICreateProductDTO } from "@modules/farm/dtos/product-dto/i-create-producer-dto";
 import { Product } from "@modules/farm/infra/typeorm/entities/product";
-import { noContent, serverError, ok, HttpResponse } from "@shared/helpers";
+import {
+  noContent,
+  serverError,
+  ok,
+  HttpResponse,
+  created,
+} from "@shared/helpers";
 import { IProductRepository } from "@modules/farm/repositories/i-product-repository";
 
 class ProductRepository implements IProductRepository {
@@ -19,7 +25,7 @@ class ProductRepository implements IProductRepository {
     const result = await this.repository
       .save(product)
       .then((newProduct) => {
-        return ok(newProduct);
+        return created(newProduct);
       })
       .catch((error) => {
         return serverError(error.message);

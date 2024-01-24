@@ -2,7 +2,13 @@ import { getRepository, Repository } from "typeorm";
 import { ICreateFarmDTO } from "@modules/farm/dtos/farm-dto/i-create-farm-dto";
 import { IFarmRepository } from "@modules/farm/repositories/i-farm-repository";
 import { Farm } from "@modules/farm/infra/typeorm/entities/farm";
-import { noContent, serverError, ok, HttpResponse } from "@shared/helpers";
+import {
+  noContent,
+  serverError,
+  ok,
+  HttpResponse,
+  created,
+} from "@shared/helpers";
 
 class FarmRepository implements IFarmRepository {
   private repository: Repository<Farm>;
@@ -33,7 +39,7 @@ class FarmRepository implements IFarmRepository {
     const result = await this.repository
       .save(farm)
       .then((farmResult) => {
-        return ok(farmResult);
+        return created(farmResult);
       })
       .catch((error) => {
         return serverError(error.message);
